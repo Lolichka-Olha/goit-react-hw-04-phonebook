@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-// import { nanoid } from 'nanoid';
 import { Form, Label, Input, Btn } from './ContactForm.styled';
 
 const ContactForm = ({ onSubmit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-
-  // nameId = nanoid();
-  // numberId = nanoid();
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -17,9 +13,11 @@ const ContactForm = ({ onSubmit }) => {
       case 'name':
         setName(value);
         break;
+
       case 'number':
         setNumber(value);
         break;
+
       default:
         break;
     }
@@ -27,7 +25,7 @@ const ContactForm = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(name, number);
+    onSubmit({ name: name, number: number });
     reset();
   };
 
